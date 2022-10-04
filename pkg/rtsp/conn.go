@@ -758,6 +758,7 @@ t=0 0`
 
 func UnmarshalSDP(rawSDP []byte) ([]*streamer.Media, error) {
 	medias, err := streamer.UnmarshalSDP(rawSDP)
+
 	if err != nil {
 		// fix SDP header for some cameras
 		i := bytes.Index(rawSDP, []byte("\nm="))

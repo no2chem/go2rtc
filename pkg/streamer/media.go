@@ -189,6 +189,11 @@ func UnmarshalSDP(rawSDP []byte) ([]*Media, error) {
 func MarshalSDP(medias []*Media) ([]byte, error) {
 	sd := &sdp.SessionDescription{}
 
+	sd.Attributes = append(sd.Attributes, sdp.Attribute{
+		Key:   "control",
+		Value: "*",
+	})
+
 	payloadType := uint8(96)
 
 	for _, media := range medias {
